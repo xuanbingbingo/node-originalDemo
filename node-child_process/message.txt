@@ -1,0 +1,7 @@
+子进程当前工作目录为：/Users/libin/node-Demo/myapp-originalDemo/node-child_process
+0:/Users/libin/.nvm/versions/node/v7.2.0/bin/node
+1:/Users/libin/node-Demo/myapp-originalDemo/node-child_process/test/test1.js
+2:one
+3:two
+4:three
+5:four
