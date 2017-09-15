@@ -14,9 +14,9 @@ if(cluster.isMaster){
             res.write('<html><head><meta charset="utf-8"></head></html>');
             res.write('客户端请求在子进程'+cluster.worker.id+'中被处理');
             res.end();
-            console.log('子进程'+cluster.worker.id+'处理中。。。');
+            console.log('子进程'+cluster.worker.id+'处理中。。。PID为'+process.pid);
         }
-    }).listen(1340,'127.0.0.1');
+    }).listen(1341,'127.0.0.1');
 }
 cluster.on('fork', function(worker){
     console.log('子进程'+ worker.id + '被开启');

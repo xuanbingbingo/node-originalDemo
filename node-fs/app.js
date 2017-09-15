@@ -1,8 +1,45 @@
-    
+
 var fs = require('fs');
 var path = require('path');
-//同步读取数据
-// var data = fs.readFileSync('./index.html','utf8');
+var events = require('events');
+var async = require('async');
+// var event = new events.EventEmitter();
+
+// event.on('test',function(data){
+//     console.log(data);
+// })
+// event.emit('test','testData');
+
+//同步／串行 读取数据
+var data = fs.readFileSync('./index.html','utf8');
+console.log(data);
+console.log('-------------------------------------');
+var data1 = fs.readFileSync('./index1.html','utf8');
+console.log(data1);
+
+//测试使用异步模块儿的不同方法的执行时间
+// let a = (callback)=>{
+//     fs.readFile('./index.html', 'utf8', function(err, data){
+//         callback(null,data);
+//     });
+// }
+// let b = (callback)=>{
+//     fs.readFile('./index1.html', 'utf8', function(err, data){
+//         callback(null,data);
+//     });
+// }
+// console.time('先后执行总时间：');
+// async.series([a,b],function(err,result){
+//     console.log(result[0],result[1])
+//     console.timeEnd('先后执行总时间：');
+// });
+
+// console.time('并行执行总时间：');
+// async.parallel([a,b],function(err,result){
+//     console.log(result[0],result[1])
+//     console.timeEnd('并行执行总时间：');
+// });
+
 
 //异步读取数据
 // fs.readFile('./index.html', 'utf8', function(err, data){
@@ -41,7 +78,7 @@ var path = require('path');
 // })
 
 //使用appednFile追加数据到一个文件的尾部
-// fs.appendFile('message.txt','这绝对是追加的数据','utf8',function(err){
+// fs.appendFile('message.txt','\n这绝对是追加的数据','utf8',function(err){
 //     if(err) console.log('追加文件数据失败');
 //     else console.log('追加文件操作成功');
 // })
@@ -132,7 +169,7 @@ var path = require('path');
 //         console.log('文件存在');
 //     }else{
 //         console.log('文件不存在');
-//     } 
+//     }
 // })
 
 //获取文件或目录的绝对路径
@@ -170,7 +207,7 @@ var path = require('path');
 // })
 // setTimeout(function(){
 //     readStream.resume();
-// },1000)
+// },3000)
 
 //使用WriteStream对象写入文件
 // var outStream = fs.createWriteStream('out.txt');
@@ -224,22 +261,3 @@ var path = require('path');
 // var myPath = path.extname(__dirname+'/testDir/index.html'); //path.extname();
 // console.log(myPath);
 // console.log(path.sep,path.delimiter); //当前操作系统下的文件分割符和路径分割符
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
